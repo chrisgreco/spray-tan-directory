@@ -6,6 +6,7 @@ import {
   SITE_DESCRIPTION,
   SITE_URL,
 } from "@/lib/constants";
+import Logo from "@/components/Logo";
 import "./globals.css";
 
 const dmSerif = DM_Serif_Display({
@@ -55,14 +56,7 @@ export default function RootLayout({
         {/* Header */}
         <header className="sticky top-0 z-50 border-b border-peach/30 bg-sand/95 backdrop-blur-md">
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-bronzed-gold">
-                <span className="text-sm font-bold text-white">ST</span>
-              </div>
-              <span className="font-display text-xl text-espresso">
-                SprayTan<span className="text-bronzed-gold">.com</span>
-              </span>
-            </Link>
+            <Logo />
             <div className="hidden items-center gap-6 md:flex">
               <Link
                 href="/#cities"
@@ -103,9 +97,7 @@ export default function RootLayout({
           <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <div>
-                <h3 className="font-display text-lg text-white">
-                  SprayTan<span className="text-bronzed-gold">.com</span>
-                </h3>
+                <Logo size="small" />
                 <p className="mt-3 text-sm leading-relaxed">
                   The premier directory for finding mobile spray tan artists
                   near you. Compare prices, read reviews, and book your
