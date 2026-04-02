@@ -222,7 +222,7 @@ export default async function ListingPage({ params }: PageProps) {
                 <div className="mt-8 grid gap-3 border-t border-peach/20 pt-6 sm:grid-cols-2">
                   {listing.phone && (
                     <a
-                      href={`tel:${listing.phone}`}
+                      href={`tel:${listing.phone?.replace(/\D/g, "")}`}
                       className="flex items-center gap-2 rounded-lg border border-peach/30 p-3 text-sm text-espresso transition-colors hover:border-bronzed-gold"
                     >
                       <Phone className="h-4 w-4 text-bronzed-gold" />
