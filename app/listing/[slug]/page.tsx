@@ -305,6 +305,14 @@ export default async function ListingPage({ params }: PageProps) {
 
             {/* Sidebar */}
             <div className="space-y-6">
+              <div className="rounded-xl border border-peach/30 bg-white p-4 text-center shadow-sm">
+                <p className="text-sm text-espresso/60">
+                  Own this business?{" "}
+                  <Link href="/add-listing" className="font-semibold text-bronzed-gold hover:underline">
+                    Claim your listing.
+                  </Link>
+                </p>
+              </div>
               <LeadForm
                 city={listing.city}
                 state={listing.state}

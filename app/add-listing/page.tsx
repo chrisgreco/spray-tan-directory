@@ -1,32 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle } from "lucide-react";
-import { solutions } from "@/data/solutions";
+import { ShieldCheck, CheckCircle } from "lucide-react";
 
-export default function AddListingPage() {
+export default function ClaimListingPage() {
   const [form, setForm] = useState({
     business_name: "",
+    contact_name: "",
     email: "",
     phone: "",
-    website: "",
-    city: "",
-    state: "",
-    zip: "",
-    description: "",
-    solutions: [] as string[],
-    price_range: "",
+    role: "",
+    message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  const handleSolutionToggle = (slug: string) => {
-    setForm((prev) => ({
-      ...prev,
-      solutions: prev.solutions.includes(slug)
-        ? prev.solutions.filter((s) => s !== slug)
-        : [...prev.solutions, slug],
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +21,7 @@ export default function AddListingPage() {
       const res = await fetch("/api/listings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ type: "claim_request", ...form }),
       });
       if (res.ok) {
         setStatus("success");
@@ -53,12 +39,11 @@ export default function AddListingPage() {
         <div className="container-narrow max-w-xl text-center">
           <CheckCircle className="mx-auto h-16 w-16 text-bronzed-gold" />
           <h1 className="mt-6 font-display text-3xl text-espresso">
-            Listing Submitted!
+            Claim Request Submitted!
           </h1>
           <p className="mt-3 text-espresso/60">
-            Thank you for submitting your listing. Our team will review it and
-            get it published within 24-48 hours. You&apos;ll receive a
-            confirmation email once your listing is live.
+            Your claim request has been submitted. We&apos;ll verify and connect
+            you within 48 hours.
           </p>
         </div>
       </div>
@@ -69,12 +54,16 @@ export default function AddListingPage() {
     <>
       <section className="bg-gradient-to-b from-peach/20 to-sand section-padding">
         <div className="container-narrow max-w-2xl text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-bronzed-gold/10">
+            <ShieldCheck className="h-6 w-6 text-bronzed-gold" />
+          </div>
           <h1 className="font-display text-3xl text-espresso sm:text-4xl">
-            List Your Spray Tan Business
+            Claim Your Listing
           </h1>
           <p className="mt-3 text-espresso/60">
-            Get discovered by thousands of clients searching for spray tan
-            artists in your area. Listing is free and takes just a few minutes.
+            We&apos;ve already listed your business based on public information.
+            Claim your listing to update your description, add photos, and
+            respond to reviews.
           </p>
         </div>
       </section>
@@ -86,7 +75,7 @@ export default function AddListingPage() {
             className="rounded-2xl bg-white p-6 shadow-sm sm:p-8"
           >
             <h2 className="font-display text-xl text-espresso">
-              Business Details
+              Claim Details
             </h2>
 
             <div className="mt-6 space-y-4">
@@ -102,8 +91,47 @@ export default function AddListingPage() {
                     setForm({ ...form, business_name: e.target.value })
                   }
                   className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold"
-                  placeholder="e.g., Golden Hour Spray Tans"
+                  placeholder="Search for your business name as it appears on our site"
                 />
+                <p className="mt-1 text-xs text-espresso/40">
+                  Enter your business name exactly as it appears in our directory
+                </p>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-espresso">
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.contact_name}
+                    onChange={(e) =>
+                      setForm({ ...form, contact_name: e.target.value })
+                    }
+                    className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold"
+                    placeholder="Your full name"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-espresso">
+                    Your Role *
+                  </label>
+                  <select
+                    required
+                    value={form.role}
+                    onChange={(e) =>
+                      setForm({ ...form, role: e.target.value })
+                    }
+                    className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold"
+                  >
+                    <option value="">Select your role...</option>
+                    <option value="owner">Owner</option>
+                    <option value="manager">Manager</option>
+                    <option value="authorized_rep">Authorized Representative</option>
+                  </select>
+                </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -138,128 +166,17 @@ export default function AddListingPage() {
 
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-espresso">
-                  Website
-                </label>
-                <input
-                  type="url"
-                  value={form.website}
-                  onChange={(e) =>
-                    setForm({ ...form, website: e.target.value })
-                  }
-                  className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold"
-                  placeholder="https://"
-                />
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-3">
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-espresso">
-                    City *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.city}
-                    onChange={(e) =>
-                      setForm({ ...form, city: e.target.value })
-                    }
-                    className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-espresso">
-                    State *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.state}
-                    onChange={(e) =>
-                      setForm({ ...form, state: e.target.value })
-                    }
-                    className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold"
-                    placeholder="e.g., FL"
-                    maxLength={2}
-                  />
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-espresso">
-                    ZIP Code
-                  </label>
-                  <input
-                    type="text"
-                    value={form.zip}
-                    onChange={(e) =>
-                      setForm({ ...form, zip: e.target.value })
-                    }
-                    className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold"
-                    maxLength={5}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="mb-1.5 block text-sm font-medium text-espresso">
-                  Price Range
-                </label>
-                <select
-                  value={form.price_range}
-                  onChange={(e) =>
-                    setForm({ ...form, price_range: e.target.value })
-                  }
-                  className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold"
-                >
-                  <option value="">Select price range</option>
-                  <option value="$25-$50">$25-$50</option>
-                  <option value="$50-$75">$50-$75</option>
-                  <option value="$75-$100">$75-$100</option>
-                  <option value="$100-$150">$100-$150</option>
-                  <option value="$150+">$150+</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="mb-1.5 block text-sm font-medium text-espresso">
-                  Description *
+                  What would you like to update?
                 </label>
                 <textarea
-                  required
                   rows={4}
-                  value={form.description}
+                  value={form.message}
                   onChange={(e) =>
-                    setForm({ ...form, description: e.target.value })
+                    setForm({ ...form, message: e.target.value })
                   }
                   className="w-full rounded-lg border border-peach/50 bg-sand px-4 py-3 text-sm text-espresso outline-none focus:border-bronzed-gold resize-none"
-                  placeholder="Tell clients about your services, experience, and what makes you unique..."
+                  placeholder="Tell us what information you'd like to correct or add — updated description, photos, services, etc."
                 />
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-medium text-espresso">
-                  Services Offered
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  {solutions.map((s) => (
-                    <button
-                      key={s.slug}
-                      type="button"
-                      onClick={() =>
-                        handleSolutionToggle(
-                          s.slug.replace("-spray-tan", "").replace(/-/g, "_")
-                        )
-                      }
-                      className={`rounded-full px-4 py-1.5 text-sm transition-colors ${
-                        form.solutions.includes(
-                          s.slug.replace("-spray-tan", "").replace(/-/g, "_")
-                        )
-                          ? "bg-bronzed-gold text-white"
-                          : "border border-peach/50 bg-sand text-espresso/70 hover:border-bronzed-gold"
-                      }`}
-                    >
-                      {s.name}
-                    </button>
-                  ))}
-                </div>
               </div>
             </div>
 
@@ -272,8 +189,8 @@ export default function AddListingPage() {
                 "Submitting..."
               ) : (
                 <>
-                  <Send className="mr-2 h-4 w-4" />
-                  Submit Listing
+                  <ShieldCheck className="mr-2 h-4 w-4" />
+                  Submit Claim Request
                 </>
               )}
             </button>

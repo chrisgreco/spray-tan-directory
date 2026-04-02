@@ -77,14 +77,14 @@ export default function RootLayout({
                 Blog
               </Link>
               <Link href="/add-listing" className="btn-primary text-xs">
-                List Your Business
+                Claim Your Listing
               </Link>
             </div>
             <Link
               href="/add-listing"
               className="btn-primary text-xs md:hidden"
             >
-              List Your Business
+              Claim Your Listing
             </Link>
           </nav>
         </header>
@@ -164,7 +164,7 @@ export default function RootLayout({
                   </li>
                   <li>
                     <Link href="/add-listing" className="hover:text-bronzed-gold">
-                      Add Your Listing
+                      Claim Your Listing
                     </Link>
                   </li>
                   <li>

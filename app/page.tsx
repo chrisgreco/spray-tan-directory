@@ -263,14 +263,14 @@ export default async function HomePage() {
       <section className="section-padding bg-gradient-to-br from-espresso to-espresso/95">
         <div className="container-narrow text-center">
           <h2 className="font-display text-2xl text-white sm:text-3xl">
-            Are You a Spray Tan Artist?
+            Own a Listed Business?
           </h2>
           <p className="mt-3 text-white/60">
-            Join {SITE_NAME} and get discovered by thousands of clients
-            searching for spray tan services in your area.
+            Already listed? Claim your profile to update your info, add photos,
+            and respond to reviews.
           </p>
           <Link href="/add-listing" className="btn-primary mt-8">
-            List Your Business Free
+            Claim Your Listing
           </Link>
         </div>
       </section>
