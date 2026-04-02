@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-sand text-espresso antialiased;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-bronzed-gold px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-opacity-90 hover:shadow-lg;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border-2 border-bronzed-gold px-6 py-3 text-sm font-semibold text-bronzed-gold transition-all hover:bg-bronzed-gold hover:text-white;
+  }
+  .card {
+    @apply rounded-2xl bg-white shadow-sm transition-all hover:shadow-md;
+  }
+  .section-padding {
+    @apply px-4 py-16 sm:px-6 lg:px-8;
+  }
+  .container-narrow {
+    @apply mx-auto max-w-6xl;
+  }
+  .gold-gradient {
+    @apply bg-gradient-to-r from-bronzed-gold to-peach bg-clip-text text-transparent;
+  }
+}
+
+/* MDX blog content styles */
+.prose h2 {
+  @apply font-display text-2xl text-espresso mt-10 mb-4;
+}
+.prose h3 {
+  @apply font-display text-xl text-espresso mt-8 mb-3;
+}
+.prose p {
+  @apply mb-4 leading-relaxed text-espresso/80;
+}
+.prose ul {
+  @apply mb-4 list-disc pl-6 space-y-1 text-espresso/80;
+}
+.prose ol {
+  @apply mb-4 list-decimal pl-6 space-y-1 text-espresso/80;
+}
+.prose table {
+  @apply w-full mb-6 border-collapse;
+}
+.prose th {
+  @apply bg-peach/30 px-4 py-2 text-left text-sm font-semibold text-espresso border-b border-peach;
+}
+.prose td {
+  @apply px-4 py-2 text-sm text-espresso/80 border-b border-sand;
+}
+.prose strong {
+  @apply text-espresso font-semibold;
+}
+.prose a {
+  @apply text-bronzed-gold underline underline-offset-2 hover:text-bronzed-gold/80;
+}
+.prose blockquote {
+  @apply border-l-4 border-bronzed-gold pl-4 italic text-espresso/70 my-4;
+}

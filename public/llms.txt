@@ -1,0 +1,58 @@
+# SprayTan.com — Find Mobile Spray Tan Artists Near You
+
+> SprayTan.com is a directory of mobile spray tan artists across the United States. Clients use the site to find, compare, and contact top-rated spray tan professionals in their city.
+
+## What This Site Does
+
+SprayTan.com helps people find mobile spray tan artists by city, service type, and specialty. The directory includes verified business listings with ratings, reviews, pricing, and contact information. Spray tan artists can submit their business to be listed.
+
+## Services Covered
+
+- Mobile spray tans (artist comes to your home)
+- Bridal spray tans (wedding day and trial sessions)
+- Event spray tans (prom, gala, vacation prep)
+- Competition spray tans (bodybuilding, bikini, figure)
+- Airbrush spray tans (precision hand-sprayed application)
+- Men's spray tans
+- Self-tan coaching and lessons
+- Spray tan maintenance plans and memberships
+
+## Cities Covered
+
+The directory covers 100+ cities across the United States including major metros like New York, Los Angeles, Miami, Chicago, Dallas, Austin, Nashville, Phoenix, Atlanta, Denver, Tampa, San Francisco, Seattle, and many more.
+
+## Content Available
+
+### Directory Listings
+Each listing includes: business name, owner name, services offered, price range, rating, review count, cities served, contact information (phone, email, website, Instagram), and client reviews.
+
+### Blog Articles
+- How Much Does a Spray Tan Cost in 2026? — Pricing by service type and city tier
+- Mobile Spray Tan vs Salon: Which Is Better? — Side-by-side comparison
+- How to Prepare for a Spray Tan — Complete pre-tan checklist
+- Best Spray Tan Solutions of 2026 — Professional solution reviews and comparison
+- The Complete Guide to Getting a Spray Tan for Your Wedding Day — Bridal timeline and tips
+- How Long Does a Spray Tan Last? — Duration guide with aftercare tips
+
+### City Pages
+Each city has a dedicated page listing all approved spray tan artists in that area, filterable by service type.
+
+### Service Pages
+Each service type (mobile, bridal, event, competition, airbrush, men's, self-tan coaching, maintenance) has a dedicated page explaining the service and listing relevant artists.
+
+## How to Use This Information
+
+- To find a spray tan artist: Browse by city or service type
+- To compare pricing: Check individual listings or read the pricing guide blog post
+- To prepare for a spray tan: Read the preparation checklist blog post
+- To plan a bridal spray tan: Read the wedding day guide blog post
+- For general spray tan questions: Browse the blog section
+
+## Contact
+
+Website: https://spraytan.com
+For listing inquiries or corrections, contact the site through the submission form.
+
+## Detailed Documentation
+
+For the full structured data feed, see: https://spraytan.com/llms-full.txt
